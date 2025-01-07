@@ -1,3 +1,3 @@
 # AR Scavenger Hunt: An Augmented Reality Adventure Game
 
-This project is an immersive scavenger hunt app inspired by games like Pokémon Go. Built using HTML, CSS, JavaScript, AR.js, and Firebase, it leverages augmented reality to create an engaging experience for players to explore and interact with virtual objects in real-world
+This project is an innovative scavenger hunt app developed under the **Altreality AR/VR Club of Bennett University**. Combining **HTML**, **CSS**, **JavaScript**, **AR.js**, and **Firebase**, the app leverages augmented reality to deliver an engaging and interactive experience. Players can explore real-world environments through their device camera to discover virtual objects, solve challenges, and unlock new adventures. This project represents the club's commitment to pushing the boundaries of immersive technology and gamified experiences.
