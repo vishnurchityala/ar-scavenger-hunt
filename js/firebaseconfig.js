@@ -1,16 +1,18 @@
 // firebaseconfig.js
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+
+
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDvaLOzdJ6uMD8pnTDUqq50s5PnIs5hM38",
-    authDomain: "ar-scavenger-hunt-8c3f4.firebaseapp.com",
-    projectId: "ar-scavenger-hunt-8c3f4",
-    storageBucket: "ar-scavenger-hunt-8c3f4.firebasestorage.app",
-    messagingSenderId: "186347365176",
-    appId: "1:186347365176:web:80a20a642f4380644997cd",
-    measurementId: "G-ZH0V2NX1C2"
-};
+    apiKey: "AIzaSyAk7Qp_Q88lz1ovpznqN052bM7KuUAPqhw",
+    authDomain: "ar-scavenger-62f3e.firebaseapp.com",
+    projectId: "ar-scavenger-62f3e",
+    storageBucket: "ar-scavenger-62f3e.firebasestorage.app",
+    messagingSenderId: "237424627892",
+    appId: "1:237424627892:web:76166ac4e2fb87b8f547e1",
+    measurementId: "G-FDZMP0W5X5"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
