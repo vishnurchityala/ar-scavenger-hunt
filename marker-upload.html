@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scavenger Hunt App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Welcome to the Scavenger Hunt App</h1>
+
+        <form id="markerForm" class="card p-4 shadow">
+            <div class="mb-3">
+                <label for="markerName" class="form-label">Marker Name:</label>
+                <input type="text" id="markerName" name="markerName" class="form-control" placeholder="Enter marker name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description" name="description" class="form-control" rows="4" placeholder="Enter marker description" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="patternFile" class="form-label">Pattern File (.patt):</label>
+                <input type="file" id="patternFile" name="patternFile" class="form-control" accept=".patt" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="objectFile" class="form-label">Object File (.glb):</label>
+                <input type="file" id="objectFile" name="objectFile" class="form-control" accept=".glb" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="pictureFile" class="form-label">Picture File (.png):</label>
+                <input type="file" id="pictureFile" name="pictureFile" class="form-control" accept=".png" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="rarity" class="form-label">Rarity:</label>
+                <select id="rarity" name="rarity" class="form-select">
+                    <option value="common">Common</option>
+                    <option value="uncommon">Uncommon</option>
+                    <option value="rare">Rare</option>
+                    <option value="legendary">Legendary</option>
+                    <option value="mythical">Mythical</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Upload Marker</button>
+        </form>
+    </div>
+
+    <script type="module" src="js/files.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,76 +1,87 @@
-import firebase from './firebaseconfig.js';
+// Import Firebase and Firestore functions
+import firebase from './firebaseconfig.js'; // Import the initialized Firebase app
 import { 
     getFirestore, 
-    doc,  
-    setDoc  
+    collection, 
+    getDocs 
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-import { 
-    getStorage, 
-    ref, 
-    uploadBytes, 
-    getDownloadURL 
-} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
 
+// Initialize Firestore
 const db = getFirestore(firebase);
-const storage = getStorage(firebase);
 
-async function uploadFileToStorage(file, path) {
+// Function to fetch markers from Firestore
+async function fetchMarkers() {
     try {
-        const storageRef = ref(storage, path);
-        await uploadBytes(storageRef, file);
-        return await getDownloadURL(storageRef);
+        const markersCollection = collection(db, 'markers'); // Reference to 'markers' collection
+        const snapshot = await getDocs(markersCollection);   // Fetch all documents in the collection
+        
+        // If no markers found, log it and return an empty array
+        if (snapshot.empty) {
+            console.warn('No markers found in Firestore.');
+            return [];
+        }
+        
+        return snapshot.docs.map(doc => doc.data());         // Map to an array of marker data
     } catch (error) {
-        throw new Error(`Failed to upload file to ${path}: ${error.message}`);
+        console.error('Error fetching markers:', error);
+        alert('Failed to load markers: ' + error.message);
+        return [];
     }
 }
 
-async function saveToFirestore(collectionName, docId, data) {
-    try {
-        const docRef = doc(db, collectionName, docId);
-        await setDoc(docRef, data);
-        console.log(`Document added to ${collectionName} with ID: ${docId}`);
-    } catch (error) {
-        throw new Error(`Failed to save document to Firestore: ${error.message}`);
+// Function to populate AR scene with markers using string methods
+async function populateARScene() {
+    const markers = await fetchMarkers(); // Fetch markers from Firestore
+    const arScene = document.getElementById('arScene'); // Get the AR scene element
+    
+    if (!arScene) {
+        console.error('AR scene element not found.');
+        return;
     }
+
+    // Ensure there are markers to display
+    if (markers.length === 0) {
+        console.log('No markers available to display in the AR scene.');
+        return;
+    }
+
+    // Loop through the fetched markers and create AR marker elements
+    markers.forEach(marker => {
+        // Check if marker URLs exist
+        if (!marker.patternUrl || !marker.objectUrl) {
+            console.warn(`Missing URLs for marker ${marker.name}. Skipping marker.`);
+            return;
+        }
+
+        // Create the marker HTML string using template literals
+        const markerHTML = `
+            <a-marker type="pattern" url="${marker.patternUrl}">
+                <a-entity gltf-model="${marker.objectUrl}" scale="3 3 3"></a-entity>
+            </a-marker>
+        `;
+
+        // Append the marker HTML string to the AR scene
+        arScene.innerHTML += markerHTML;  // Append the string of marker HTML to the scene
+    });
+
+    console.log('AR scene populated with markers:', markers);
+
+    // Refresh the <a-scene> by removing and re-adding it
+    refreshARScene();
 }
 
-async function handleMarkerFormSubmission(event) {
-    event.preventDefault();
+// Function to refresh the <a-scene>
+function refreshARScene() {
+    const arScene = document.getElementById('arScene');
+    
+    // Clone the scene element to reset and re-render
+    const clonedScene = arScene.cloneNode(true); 
+    
+    // Replace the old scene with the cloned scene
+    arScene.parentNode.replaceChild(clonedScene, arScene);
 
-    try {
-        const markerName = document.getElementById('markerName').value;
-        const description = document.getElementById('description').value;
-        const patternFile = document.getElementById('patternFile').files[0];
-        const objectFile = document.getElementById('objectFile').files[0];
-        const pictureFile = document.getElementById('pictureFile').files[0];
-        const rarity = document.getElementById('rarity').value;
-
-        const [patternUrl, objectUrl, pictureUrl] = await Promise.all([
-            uploadFileToStorage(patternFile, `patterns/${markerName}.patt`),
-            uploadFileToStorage(objectFile, `objects/${markerName}.glb`),
-            uploadFileToStorage(pictureFile, `pictures/${markerName}.png`),
-        ]);
-
-        const markerData = {
-            name: markerName,
-            description: description,
-            patternUrl: patternUrl,
-            objectUrl: objectUrl,
-            pictureUrl: pictureUrl,
-            rarity: rarity,
-            catched: false,
-            createdAt: new Date().toISOString(),
-        };
-
-        await saveToFirestore('markers', markerName, markerData);
-
-        console.log('Marker successfully uploaded!');
-        alert('Marker successfully uploaded!');
-        document.getElementById('markerForm').reset();
-    } catch (error) {
-        console.error('Error uploading marker:', error);
-        alert(`Error uploading marker: ${error.message}`);
-    }
+    console.log('AR scene has been refreshed');
 }
 
-document.getElementById('markerForm').addEventListener('submit', handleMarkerFormSubmission);
+// Call the function to populate the AR scene
+populateARScene();
