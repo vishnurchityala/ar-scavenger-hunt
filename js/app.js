@@ -50,8 +50,10 @@ async function populateARScene() {
                 <a-entity gltf-model="${marker.objectUrl}" scale="3 3 3"></a-entity>
             </a-marker>
         `;
-
-        arScene.innerHTML += markerHTML;
+        if (!marker.catched){
+            console.log('Marker not captured');
+            arScene.innerHTML += markerHTML;
+        }
     });
 
     console.log('AR scene populated with markers:', markers);
