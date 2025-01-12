@@ -45,15 +45,15 @@ async function populateARScene() {
             return;
         }
 
+        const displayMarker = !marker.catched;
+
         const markerHTML = `
-            <a-marker type="pattern" url="${marker.patternUrl}">
-                <a-entity gltf-model="${marker.objectUrl}" scale="3 3 3"></a-entity>
+            <a-marker type="pattern" url="${marker.patternUrl}" visible="${displayMarker}" id="marker-${marker.name}">
+                <a-entity gltf-model="${marker.objectUrl}" visible="${displayMarker}" id="object-${marker.name}" scale="2 2 2"></a-entity>
             </a-marker>
         `;
-        if (!marker.catched){
-            console.log('Marker not captured');
-            arScene.innerHTML += markerHTML;
-        }
+        arScene.innerHTML += markerHTML;
+
     });
 
     console.log('AR scene populated with markers:', markers);
