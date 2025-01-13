@@ -2,10 +2,17 @@ import firebase from './firebaseconfig.js';
 import { 
     getFirestore, 
     collection, 
-    getDocs 
+    getDocs, 
+    doc, 
+    getDoc 
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { 
+    getAuth, 
+    onAuthStateChanged 
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const db = getFirestore(firebase);
+const auth = getAuth(firebase);
 
 async function fetchMarkers() {
     try {
@@ -68,4 +75,42 @@ function refreshARScene() {
     console.log('AR scene has been refreshed');
 }
 
-populateARScene();
+function checkPlayerAuthorization(user) {
+    const playersCollection = collection(db, 'players');
+    const playerDoc = doc(playersCollection, user.uid);
+
+    return getDoc(playerDoc).then(docSnapshot => {
+        if (docSnapshot.exists()) {
+            console.log('Player is authorized:', docSnapshot.data());
+            return true;
+        } else {
+            console.warn('Player is not authorized.');
+            return false;
+        }
+    }).catch(error => {
+        console.error('Error checking player authorization:', error);
+        return false;
+    });
+}
+
+function handleAuthStateChange(user) {
+    if (user) {
+        checkPlayerAuthorization(user).then(isAuthorized => {
+            if (isAuthorized) {
+                populateARScene();
+            } else {
+                console.log('You are not authorized to view this page.');
+                populateARScene();
+            }
+        });
+    } else {
+        console.log('Please log in to view this page.');
+    }
+}
+
+onAuthStateChanged(auth, handleAuthStateChange);
+
+window.addEventListener('load', () => {
+    const user = auth.currentUser;
+    handleAuthStateChange(user);
+});
