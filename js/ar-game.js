@@ -105,14 +105,7 @@ function handleAuthStateChange(user) {
         });
     } else {
         console.log('Please log in to view this page.');
-        checkPlayerAuthorization(user).then(isAuthorized => {
-            if (isAuthorized) {
-                populateARScene();
-            } else {
-                console.log('You are not authorized to view this page.');
-                populateARScene();
-            }
-        });
+        populateARScene();
     }
 }
 
