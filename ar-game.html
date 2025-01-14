@@ -19,37 +19,53 @@
       crossorigin="anonymous"
     ></script>
     <title>Responsive AR.js Scene in Div</title>
+    <style>
+      #logButton {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+      }
+    </style>
   </head>
   <body allow="gyroscope; accelerometer">
     <!-- Container Div -->
-    <div id="scene-container">
+    <div id="scene-container" style="position: relative; height: 100vh; width: 100%;">
       <!-- a-frame root container for all 3D objects in the scene -->
       <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam;" id="arScene">
         <!-- Camera Component -->
         <a-entity camera></a-entity>
-        <!-- Ensure markers are visible even without tracking -->
-        <!-- <a-entity light="type: ambient; intensity: 1"></a-entity> -->
       </a-scene>
+
+      <!-- Button to log the marker ID -->
+      <button id="logButton" class="btn btn-primary">Log Marker ID</button>
     </div>
 
+    <!-- Import AR game logic -->
     <script type="module" src="./js/ar-game.js"></script>
     <script>
-    // Request motion permission for iOS
-    if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
-      DeviceMotionEvent.requestPermission()
-        .then(response => {
-          if (response === 'granted') {
-            console.log('Motion access granted');
-          } else {
-            alert('Motion access denied. Please enable motion access in your settings.');
-          }
-        })
-        .catch(error => {
-          console.error('Error requesting motion permission:', error);
-        });
-    } else {
-      console.log('DeviceMotionEvent not supported');
-    }
-  </script>
+      // Request motion permission for iOS
+      if (
+        typeof DeviceMotionEvent !== "undefined" &&
+        typeof DeviceMotionEvent.requestPermission === "function"
+      ) {
+        DeviceMotionEvent.requestPermission()
+          .then((response) => {
+            if (response === "granted") {
+              console.log("Motion access granted");
+            } else {
+              alert(
+                "Motion access denied. Please enable motion access in your settings."
+              );
+            }
+          })
+          .catch((error) => {
+            console.error("Error requesting motion permission:", error);
+          });
+      } else {
+        console.log("DeviceMotionEvent not supported");
+      }
+    </script>
   </body>
 </html>
