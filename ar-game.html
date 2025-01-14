@@ -21,11 +21,12 @@
     <title>Responsive AR.js Scene in Div</title>
     <style>
       #logButton {
-        position: absolute;
+        position: fixed;
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 10;
+        margin-bottom: 10px;
       }
     </style>
   </head>
@@ -39,7 +40,7 @@
       </a-scene>
 
       <!-- Button to log the marker ID -->
-      <button id="logButton" class="btn btn-primary">Log Marker ID</button>
+      <button id="logButton" class="btn btn-primary rounded-pill py-2 px-4 fw-bold">Capture Object</button>
     </div>
 
     <!-- Import AR game logic -->
