@@ -91,13 +91,13 @@ function addGlobalMarkerEventListener() {
 
     arScene.addEventListener('markerFound', (event) => {
         const markerId = event.target.id;
-        console.log(`Marker found: ${markerId}`);
+        // console.log(`Marker found: ${markerId}`);
         lastFoundMarkerId = markerId;
     });
 
     arScene.addEventListener('markerLost', (event) => {
         const markerId = event.target.id;
-        console.log(`Marker lost: ${markerId}`);
+        // console.log(`Marker lost: ${markerId}`);
         lastFoundMarkerId = null;
     });
 }
