@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+
+body{
+    background-color: rgb(254, 252, 244);
+}
+.hero-font{
+    font-family: "Uncial Antiqua", serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 3.2rem;
+    color: #002C34;
+    line-height:3rem;
+}
+
+.hero-subheading{
+    color: #1492A8;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.bg-teal-blue{
+    background-color: #40ABBE;
+}
+
+.fs-xsmall{
+    font-size: x-small;
+}
+
+.hero-image{
+    width:340px;
+}
+
+.hero-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .hero-image {
+        width: 95%;
+    }
+}
