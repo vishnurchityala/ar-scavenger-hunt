@@ -1,21 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Uncial+Antiqua&display=swap');
 
 body{
     background-color: rgb(254, 252, 244);
+    user-select: none;
 }
+
+.uncial-antiqua-regular {
+    font-family: "Uncial Antiqua", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 .hero-font{
     font-family: "Uncial Antiqua", serif;
     font-weight: 900;
     font-style: normal;
-    font-size: 3.2rem;
+    font-size: 4rem;
     color: #002C34;
-    line-height:3rem;
+    line-height:4rem;
+}
+
+.text-teal-blue{
+    color: #40ABBE;
 }
 
 .hero-subheading{
     color: #1492A8;
     font-size: 0.7rem;
-    font-weight: 700;
+    font-weight: 650;
 }
 
 .bg-teal-blue{
