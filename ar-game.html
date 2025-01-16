@@ -19,26 +19,17 @@
       crossorigin="anonymous"
     ></script>
     <title>Responsive AR.js Scene in Div</title>
-    <style>
-      #logButton {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 10;
-        margin-bottom: 10px;
-        background-color: #40E0D0; /* Light teal blue */
-        border-color: #40E0D0; /* Light teal blue */
-        color: white; /* Text color */
-      }
-      
-      .btn-glow {
-        box-shadow: 0 0 8px rgba(64, 224, 208, 0.8), 0 0 20px rgba(64, 224, 208, 0.8);
-        transform: scale(1.1);
-      }
-    </style>
+    <link rel="stylesheet" href="/css/ar-game.css">
   </head>
   <body allow="gyroscope; accelerometer">
+    <div class="loader-overlay d-none align-content-center" id="loader">
+      <div class="loader ms-auto me-auto"></div>
+    </div>
+    <div class="glass-navbar px-4 py-3 text-white fw-bold d-flex justify-content-center align-items-center w-100 mt-2 shadow-lg">
+      <p class="m-0 me-auto fs-xsmall" id="game-time">4:00PM</p>
+      <p class="m-0 fs-xsmall uncial-antiqua-regular fw-bold">ARcade Scavenger Hunt</p>
+      <p class="m-0  ms-auto fs-xsmall">🔥 120</p>
+    </div>
     <!-- Container Div -->
     <div id="scene-container" style="position: relative; height: 100vh; width: 100%;">
       <!-- a-frame root container for all 3D objects in the scene -->
@@ -48,7 +39,7 @@
       </a-scene>
 
       <!-- Button to log the marker ID -->
-      <button id="logButton" class="btn btn-primary btn-glow rounded-pill py-3 px-4 fw-bold">Capture Object</button>
+      <button id="logButton" class="btn btn-primary btn-glow rounded-pill py-3 px-4 fw-bold fs-xsmall">Catch Creature</button>
     </div>
 
     <!-- Import AR game logic -->

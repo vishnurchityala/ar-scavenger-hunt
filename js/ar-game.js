@@ -7,6 +7,8 @@ import {
 
 const db = getFirestore(firebase);
 
+const loader = document.getElementById('loader');
+
 let lastFoundMarkerId = null;
 
 async function fetchMarkers() {
@@ -91,18 +93,37 @@ function addGlobalMarkerEventListener() {
 
     arScene.addEventListener('markerFound', (event) => {
         const markerId = event.target.id;
-        // console.log(`Marker found: ${markerId}`);
+        console.log(`Marker found: ${markerId}`);
         lastFoundMarkerId = markerId;
     });
 
     arScene.addEventListener('markerLost', (event) => {
         const markerId = event.target.id;
-        // console.log(`Marker lost: ${markerId}`);
         lastFoundMarkerId = null;
     });
 }
 
+function updateGameTime() {
+    const gameTimeElement = document.getElementById('game-time');
+    if (!gameTimeElement) return;
+
+    setInterval(() => {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+
+        const formattedHours = hours % 12 || 12;
+        const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+        gameTimeElement.textContent = `${formattedHours}:${formattedMinutes}${ampm}`;
+    }, 1000);
+}
+
+updateGameTime();
+
 window.addEventListener('load', async () => {
+    loader.classList.remove('d-none');
     await populateARScene();
     addGlobalMarkerEventListener();
 
@@ -114,4 +135,5 @@ window.addEventListener('load', async () => {
             console.log('No marker currently found.');
         }
     });
+    loader.classList.add('d-none');
 });

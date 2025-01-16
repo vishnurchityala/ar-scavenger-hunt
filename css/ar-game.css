@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Uncial+Antiqua&family=Varela&display=swap');
+
+.uncial-antiqua-regular {
+    font-family: "Uncial Antiqua", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#logButton {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    margin-bottom: 10px;
+    background-color: #40E0D0; /* Light teal blue */
+    border-color: #40E0D0; /* Light teal blue */
+    color: white; /* Text color */
+  }
+  
+  .btn-glow {
+    box-shadow: 0 0 8px rgba(64, 224, 208, 0.8), 0 0 20px rgba(64, 224, 208, 0.8);
+    transform: scale(1.1);
+  }
+  .fs-xsmall{
+    font-size: 0.8rem;
+  }
+
+  .loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loader {
+    border: 4px solid #40E0D0;
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+.glass-navbar{
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    background-color: rgba(169, 169, 169, 0.5);
+    border-radius: 0.8rem;
+    border: 1.6px solid rgba(255, 255, 255, 0.125);
+    box-shadow: 0 0 2rem rgba(184, 184, 184, 0.2);
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
