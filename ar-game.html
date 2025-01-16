@@ -42,7 +42,7 @@
     <!-- Container Div -->
     <div id="scene-container" style="position: relative; height: 100vh; width: 100%;">
       <!-- a-frame root container for all 3D objects in the scene -->
-      <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam;" id="arScene">
+      <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" id="arScene">
         <!-- Camera Component -->
         <a-entity camera></a-entity>
       </a-scene>
