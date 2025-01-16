@@ -122,6 +122,40 @@ function updateGameTime() {
 
 updateGameTime();
 
+function capitalize(str) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+document.getElementById('logButton').addEventListener('click', () => {
+    if (!lastFoundMarkerId) {
+        return;
+    }
+
+    const modalBody = document.querySelector('#exampleModal .modal-body');
+
+    modalBody.innerHTML = '';
+
+    const markerName = capitalize(lastFoundMarkerId.replace('marker-', ''));
+
+    modalBody.innerHTML = `
+        <button type="button" class="btn-close d-block ms-auto fs-xsmall" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <img src="./img/bolddy.png" class="ms-auto me-auto" height="200px" alt="">
+            <p class="m-0 uncial-antiqua-regular fs-1 mt-2">${markerName}</p>
+            <p class="m-0 fs-xsmall text-center w-75 mt-2 varela-regular">
+                Boldy is a resilient Pokémon known for its unshakable determination and sturdy defense. With its bold attitude and rock-solid moves, it stands as a protector in any battle!
+            </p>
+        </div>
+        <p class="m-0 text-center fw-bold fs-xsmall uncial-antiqua-regular mt-4 mb-2 w-50 ms-auto me-auto" style="color: red;">
+            Ooh It was Captured by other before 😢
+        </p>
+    `;
+
+    const modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+    modal.show();
+});
+
 window.addEventListener('load', async () => {
     loader.classList.remove('d-none');
     await populateARScene();

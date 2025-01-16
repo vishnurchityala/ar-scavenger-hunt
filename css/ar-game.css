@@ -6,6 +6,12 @@
     font-style: normal;
 }
 
+.varela-regular {
+    font-family: "Varela", serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
 #logButton {
     position: fixed;
     bottom: 20px;
@@ -61,6 +67,10 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+}
+
+.bg-offwhite{
+    background-color: rgb(254, 252, 244);
 }
 
 @keyframes spin {
