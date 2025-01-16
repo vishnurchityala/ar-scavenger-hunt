@@ -116,7 +116,7 @@ function updateGameTime() {
         const formattedHours = hours % 12 || 12;
         const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-        gameTimeElement.textContent = `${formattedHours}:${formattedMinutes}${ampm}`;
+        gameTimeElement.textContent = `${formattedHours}:${formattedMinutes} ${ampm}`;
     }, 1000);
 }
 
