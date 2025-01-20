@@ -14,7 +14,7 @@ function adjustHTML() {
     } else {
         document.querySelector('.navbar').innerHTML = `
             <img width="80px" src="/img/Outlook-signatureI.png" alt="">
-      <img width="70px" src="/img/bennett-logo-1.webp" alt="">
+      <img width="70px" src="/img/bennett-logo-1.webp" alt="  ">
         `;
     }
 }
