@@ -158,7 +158,7 @@ document.getElementById('logButton').addEventListener('click', () => {
 
 window.addEventListener('load', async () => {
     loader.classList.remove('d-none');
-    await populateARScene();
+    // await populateARScene();
     addGlobalMarkerEventListener();
 
     const logButton = document.getElementById('logButton');
