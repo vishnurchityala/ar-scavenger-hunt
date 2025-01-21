@@ -85,6 +85,7 @@ async function handleSubmit(event) {
 
     const teamName = document.getElementById("teamName").value.trim();
     const teamSize = parseInt(document.getElementById("teamSize").value, 10);
+    const teamLead = document.getElementById("teamLead").value.trim();
     const teamMembers = [];
 
     for (let i = 1; i <= teamSize; i++) {
@@ -103,6 +104,7 @@ async function handleSubmit(event) {
     const registrationData = {
         teamName,
         teamSize,
+        teamLead,
         teamMembers,
         teamScore: 0
     };
