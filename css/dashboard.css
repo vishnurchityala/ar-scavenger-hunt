@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Uncial+Antiqua&family=Varela&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    /* background-color: #97d3dd; */
+}
+
+.hero-subheading{
+    color: #52cfe4;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.gradient-top{
+    text-align: center;
+}
+
+.header{
+    margin: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bg-teal-blue{
+    background-color: #52cfe4;
+}
+
+.info{
+    font-family: "Poppins", serif;
+    text-align: center;
+    font-size: 24px;
+}
+
+.title {
+    font-family: "Uncial Antiqua", serif;
+    font-weight: 900;
+    font-style: normal;
+    color: #002C34;
+    line-height: 4rem;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.team-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 10px;
+    margin: 8px;
+    background-color: #40ABBE;
+    backdrop-filter: blur(3px);
+    --tw-text-opacity: 1;
+    box-shadow: 0 0 2rem rgba(6, 206, 217, 0.5);
+    animation: glow 2s infinite;
+    --glow-color: rgba(9, 149, 180, 0.5);
+}
+
+.border-teal-blue{
+    border: 2px solid #40ABBE;
+    border-radius: 10px;
+}
+
+.text-teal-blue{
+    color: #52cfe4;
+}
+
+.uncial-antiqua-regular {
+    font-family: "Uncial Antiqua", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.title-2{
+    font-size: 28px;
+}
+
+.members{
+    margin: 30px;
+}
+
+.card{
+    padding: 8px;
+    border: 2px solid #40ABBE;
+    border-radius: 10px;
+    margin: 16px;
+}
+
+.image{
+    height: 35px;
+    width: 35px;
+    border-radius: 200px;
+    border: 2px solid #40ABBE;
+}
+
+.btn-teal{
+    border: 2px solid #40ABBE;
+    background-color: #40ABBE;
+    color: white;
+    padding: 13px;
+    border-radius: 10px;
+    width: 130px;
+}
+
+.alt-name{
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #40ABBE;
+    font-family: "Poppins", serif;
+}
+
+@media (max-width: 650px) {
+    .team-name{
+        max-width: 90vw;
+        margin: auto;
+    }
+
+}
+
+@media (min-width: 650px) {
+    .container {
+        max-width: 34vw;
+        margin: auto;
+    }
+
+    .info{
+        max-width: 30vw;
+        margin: auto; 
+    }
+}
