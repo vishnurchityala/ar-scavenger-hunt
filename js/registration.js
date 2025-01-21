@@ -111,17 +111,25 @@ async function handleSubmit(event) {
 
     try {
         const teamsCollection = collection(db, "teams");
+        const teamDocRef = doc(teamsCollection, teamName);
+        const teamDoc = await getDoc(teamDocRef);
+
+        if (teamDoc.exists()) {
+            alert("Team name already exists. Please choose a different team name.");
+            loader.classList.add("d-none");
+            return;
+        }
+
         const teamsSnapshot = await getDocs(teamsCollection);
         const numberOfTeams = teamsSnapshot.size;
 
-        if (!(numberOfTeams <= 2)) {
+        if (!(numberOfTeams <= 36)) {
             alert("Registration limit reached. No more teams can be registered.");
             loader.classList.add("d-none");
             return;
         }
 
-        const teamDocRef = await addDoc(teamsCollection, registrationData);
-        const teamId = teamDocRef.id;
+        await setDoc(teamDocRef, registrationData);
 
         const playersCollection = collection(db, "players");
         for (const member of teamMembers) {
@@ -134,7 +142,7 @@ async function handleSubmit(event) {
                 return;
             }
 
-            await setDoc(playerDocRef, { ...member, teamId });
+            await setDoc(playerDocRef, { ...member, teamId: teamName });
         }
 
         alert("Registration successful!");

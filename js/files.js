@@ -39,7 +39,6 @@ async function handleMarkerFormSubmission(event) {
 
     try {
         const markerName = document.getElementById('markerName').value;
-        const description = document.getElementById('description').value;
         const patternFile = document.getElementById('patternFile').files[0];
         const objectFile = document.getElementById('objectFile').files[0];
         const pictureFile = document.getElementById('pictureFile').files[0];
@@ -53,7 +52,6 @@ async function handleMarkerFormSubmission(event) {
 
         const markerData = {
             name: markerName,
-            description: description,
             patternUrl: patternUrl,
             objectUrl: objectUrl,
             pictureUrl: pictureUrl,

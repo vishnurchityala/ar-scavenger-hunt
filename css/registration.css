@@ -30,6 +30,15 @@
     animation: spin 1s linear infinite;
 }
 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .border-teal-blue{
     border: 2px solid #40ABBE;
     border-radius: 10px;
@@ -75,6 +84,11 @@ body {
     flex-direction: column;
 }
 
+.bg-teal-blue{
+    background-color: #52cfe4;
+}
+
+
 .details {
     font-family: "Poppins", serif;
     color: #40ABBE;
@@ -107,6 +121,7 @@ body {
     margin-top: 0px;
     font-size: 0.8rem;
     font-weight: 600;
+    color: black;
 }
 
 @media (max-width: 1000px) {
