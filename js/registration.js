@@ -98,6 +98,12 @@ async function handleSubmit(event) {
             return;
         }
 
+        if (!memberEmail.endsWith("@gmail.com")) {
+            alert(`Only @gmail.com email addresses are allowed for Team Member ${i}`);
+            loader.classList.add("d-none");
+            return;
+        }
+
         teamMembers.push({ name: memberName, email: memberEmail });
     }
 
