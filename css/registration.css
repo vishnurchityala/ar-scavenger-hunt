@@ -39,10 +39,10 @@ body {
     font-family: "Uncial Antiqua", serif;
     font-weight: 900;
     font-style: normal;
-    font-size: 2rem;
     color: #002C34;
     line-height: 4rem;
     text-align: center;
+    font-size: 3rem;
 }
 
 .text {
@@ -53,6 +53,7 @@ body {
 }
 
 .details {
+    font-family: "Poppins", serif;
     color: #40ABBE;
     max-width: 11vw;
     text-align: center;
@@ -82,6 +83,7 @@ body {
 .typing {
     margin-top: 0px;
     font-size: 0.8rem;
+    font-weight: 600;
 }
 
 @media (max-width: 1000px) {

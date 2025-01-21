@@ -40,7 +40,7 @@ function typeWriter() {
         eventDetails.innerHTML += text.charAt(index);
         index++;
         setTimeout(typeWriter, speed);
-    } else if (isDeleting && index > 0) {
+    } else if (isDeleting && index > 1) {
         eventDetails.innerHTML = text.substring(0, index - 1);
         index--;
         setTimeout(typeWriter, speed);
