@@ -1,23 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Importing Bootstrap CSS library -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <title>Registration AR.js Scene in Div</title>
-  </head>
-  <body>
-  </body>
-  <script type="module" src="js/dashboard.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - ARcade</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="src/output.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" /> -->
+</head>
+
+<body>
+
+  <div class="container max-w-screen">
+    <div
+      class="absolute top-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(100%_50%_at_50%_0%,rgba(0,163,255,0.13)_0,rgba(0,163,255,0)_50%,rgba(0,163,255,0)_100%)] gradient-top">
+    </div>
+    <div class="header">
+      <img width="120px" src="img/logo2.png" alt="">
+
+      <div class="title">
+        <p>ARcade</p>
+      </div>
+
+      <div class="title-2 uncial-antiqua-regular text-teal-blue">
+        <p>User Dashboard</p>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="team-name border-teal-blue">
+        <p>Team Name</p>
+      </div>
+
+      <div class="members">
+        <div class="card p-4 pl-9 flex gap-4 items-center">
+          <div class="image">
+            <img src="img/user.png" alt="">
+          </div>
+
+          <div class="name">
+            <p>Member 1 name</p>
+          </div>
+        </div>
+        <div class="card p-4 pl-9 flex gap-4 items-center">
+          <div class="image">
+            <img src="img/user.png" alt="">
+          </div>
+
+          <div class="name">
+            <p>Member 2 name</p>
+          </div>
+        </div>
+        <div class="card p-4 pl-9 flex gap-4 items-center">
+          <div class="image">
+            <img src="img/user.png" alt="">
+          </div>
+
+          <div class="name">
+            <p>Member 3 name</p>
+          </div>
+        </div>
+        <div class="card p-4 pl-9 flex gap-4 items-center">
+          <div class="image">
+            <img src="img/user.png" alt="">
+          </div>
+
+          <div class="name">
+            <p>Member 4 name</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="ar-game.html">
+      <div class="btn text-center mb-4">
+        <button class="btn-teal">Play</button>
+      </div>
+    </a>
+  </div>
+
+  <div class="footer flex flex-col justify-center items-center text-center mt-14 gap-3 m-10">
+    <div class="logos flex gap-6 justify-center items-center">
+      <a href="https://www.instagram.com/altreality_bu/"><img width="30px" src="img/instagram.png" alt=""></a>
+      <a href="https://www.linkedin.com/company/altreality-club/mycompany/"><img width="30px" src="img/linkedin.png"
+          alt=""></a>
+      <a href="https://chat.whatsapp.com/KnJlmtilTP6AOSFhX3Y1k1"><img width="30px" src="img/whatsapp.png" alt=""></a>
+    </div>
+
+    <p class="alt-name">Altreality Club of Bennett University</p>
+  </div>
+</body>
+
 </html>
