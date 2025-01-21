@@ -76,8 +76,12 @@ function updateFields() {
 }
 
 document.getElementById("teamSize").addEventListener("change", updateFields);
+
 async function handleSubmit(event) {
     event.preventDefault();
+
+    const loader = document.getElementById("loader");
+    loader.classList.remove("d-none");
 
     const teamName = document.getElementById("teamName").value.trim();
     const teamSize = parseInt(document.getElementById("teamSize").value, 10);
@@ -89,6 +93,7 @@ async function handleSubmit(event) {
 
         if (!memberName || !memberEmail) {
             alert(`Please fill in all details for Team Member ${i}`);
+            loader.classList.add("d-none");
             return;
         }
 
@@ -111,8 +116,12 @@ async function handleSubmit(event) {
 
         if (!(numberOfTeams <= 2)) {
             alert("Registration limit reached. No more teams can be registered.");
+            loader.classList.add("d-none");
             return;
         }
+
+        const teamDocRef = await addDoc(teamsCollection, registrationData);
+        const teamId = teamDocRef.id;
 
         const playersCollection = collection(db, "players");
         for (const member of teamMembers) {
@@ -121,15 +130,11 @@ async function handleSubmit(event) {
 
             if (playerDoc.exists()) {
                 alert(`Email ${member.email} is already registered.`);
+                loader.classList.add("d-none");
                 return;
             }
-        }
 
-        await addDoc(teamsCollection, registrationData);
-
-        for (const member of teamMembers) {
-            const playerDocRef = doc(playersCollection, member.email);
-            await setDoc(playerDocRef, { ...member, teamName });
+            await setDoc(playerDocRef, { ...member, teamId });
         }
 
         alert("Registration successful!");
@@ -138,6 +143,8 @@ async function handleSubmit(event) {
     } catch (error) {
         console.error("Error saving registration data: ", error);
         alert("Error saving registration data. Please try again.");
+    } finally {
+        loader.classList.add("d-none");
     }
 }
 
