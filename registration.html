@@ -47,7 +47,8 @@
       </a>
 
       <div class="alert">
-        <p>Only Registration through valid Gmail is allowed</p>
+        <p class="m-0">Only Registration through valid Gmail is allowed</p>
+        <p class="fs-xsmall" style="font-size: 12px;">Gmail account must be used for login purposes. Ensure it is filled out accurately. Valid enrollment confirmation for the team leader is mandatory; teams without a confirmed leader will not be allowed.</p>
       </div>
     </div>
 
@@ -57,12 +58,16 @@
         <p class="m-0 mb-2 ms-3 input-labels">Team Name</p>
         <input type="text" class="form-control first-input px-3 py-2 rounded-pill border-teal-blue" placeholder="Team Name" aria-label="Team Name" aria-describedby="addon-wrapping" id="teamName" required>
       </div>
+      <div>
+        <p class="m-0 mt-2 mb-2 ms-3 input-labels">Team Leader Enrolment</p>
+        <input type="text" class="form-control first-input px-3 py-2 rounded-pill border-teal-blue" placeholder="Team Name" aria-label="Team Name" aria-describedby="addon-wrapping" id="teamName" required>
+      </div>
 
       <div class="dropdown mt-3">
         <p class="m-0 mb-2 ms-3 input-labels">Team Size</p>
         <select class="form-select rounded-pill p-0 px-3 py-2 border-teal-blue" id="teamSize" required>
           <option value="" disabled selected>Number of Team Members</option>
-          <option value="1">One</option>
+          <!-- <option value="1">One</option> -->
           <option value="2">Two</option>
           <option value="3">Three</option>
           <option value="4">Four</option>
