@@ -2,14 +2,18 @@ import firebase from './firebaseconfig.js';
 import { 
     getFirestore, 
     collection, 
+    getDoc,
+    doc,updateDoc,
     getDocs 
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const db = getFirestore(firebase);
+const auth = getAuth(firebase);
 
 const loader = document.getElementById('loader');
-
 let lastFoundMarkerId = null;
+let teamId = null; // Variable to store team ID
 
 async function fetchMarkers() {
     try {
@@ -21,7 +25,7 @@ async function fetchMarkers() {
             return [];
         }
 
-        return snapshot.docs.map(doc => doc.data());
+        return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     } catch (error) {
         console.error('Error fetching markers:', error);
         alert('Failed to load markers: ' + error.message);
@@ -127,47 +131,145 @@ function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-document.getElementById('logButton').addEventListener('click', () => {
+async function updateTeamScore() {
+    console.log(teamId );
+    const teamScoreElement = document.getElementById('teamScore');
+    if (!teamScoreElement || !teamId) return;
+
+    try {
+        const teamDoc = await getDoc(doc(db, 'teams', teamId));
+        if (teamDoc.exists()) {
+            const teamData = teamDoc.data();
+            teamScoreElement.textContent = `🔥  ${teamData.teamScore}`;
+        } else {
+            console.error('Team not found in Firestore.');
+        }
+    } catch (error) {
+        console.error('Error fetching team score:', error);
+    }
+}
+
+
+document.getElementById('logButton').addEventListener('click', async () => {
     if (!lastFoundMarkerId) {
         return;
     }
 
-    const modalBody = document.querySelector('#exampleModal .modal-body');
+    loader.classList.remove('d-none');
 
+    const markerId = lastFoundMarkerId.replace('marker-', '');
+    const markerDoc = await getDoc(doc(db, 'markers', markerId));
+
+    if (!markerDoc.exists()) {
+        console.error('Marker not found in Firestore.');
+        loader.classList.add('d-none');
+        return;
+    }
+
+    const markerData = markerDoc.data();
+    const markerName = capitalize(markerData.name);
+    console.log(`Marker rarity: ${markerData.rarity}`);
+
+    const rarityPoints = {
+        common: 5,
+        uncommon: 15,
+        rare: 25,
+        legendary: 40
+    };
+
+    const points = rarityPoints[markerData.rarity] || 0;
+
+    const teamDocRef = doc(db, 'teams', teamId);
+    const teamDoc = await getDoc(teamDocRef);
+    if (!teamDoc.exists()) {
+        console.error('Team not found in Firestore.');
+        loader.classList.add('d-none');
+        return;
+    }
+
+    const teamData = teamDoc.data();
+    const capturedMarkers = teamData.capturedMarkers || [];
+
+    if (capturedMarkers.includes(markerId)) {
+        console.log('Marker already captured by this team.');
+        loader.classList.add('d-none');
+        return;
+    }
+
+    const modalBody = document.querySelector('#exampleModal .modal-body');
     modalBody.innerHTML = '';
 
-    const markerName = capitalize(lastFoundMarkerId.replace('marker-', ''));
+    let captureMessage;
+    if (markerData.count <= 0) {
+        captureMessage = 'Ooh It was Captured by others before 😢';
+    } else {
+        captureMessage = `Congratulations! You captured it and earned ${points} points! 🎉`;
+        const newCount = markerData.count - 1;
+        await updateDoc(doc(db, 'markers', markerId), { 
+            catched: newCount === 0, 
+            count: newCount 
+        });
+
+        const newScore = (teamData.teamScore || 0) + points;
+        capturedMarkers.push(markerId);
+        await updateDoc(teamDocRef, { 
+            teamScore: newScore, 
+            capturedMarkers: capturedMarkers 
+        });
+    }
 
     modalBody.innerHTML = `
         <button type="button" class="btn-close d-block ms-auto fs-xsmall" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="d-flex justify-content-center align-items-center flex-column">
-            <img src="./img/bolddy.png" class="ms-auto me-auto" height="200px" alt="">
-            <p class="m-0 uncial-antiqua-regular fs-1 mt-2">${markerName}</p>
+            <img src="${markerData.pictureUrl}" class="ms-auto me-auto" height="200px" alt="">
+            <p class="m-0 uncial-antiqua-regular fs-1 mt-2">${capitalize(markerName)}</p>
             <p class="m-0 fs-xsmall text-center w-75 mt-2 varela-regular">
-                Boldy is a resilient Pokémon known for its unshakable determination and sturdy defense. With its bold attitude and rock-solid moves, it stands as a protector in any battle!
+                Rarity:  ${capitalize(markerData.rarity || 'unknown')}
             </p>
         </div>
         <p class="m-0 text-center fw-bold fs-xsmall uncial-antiqua-regular mt-4 mb-2 w-50 ms-auto me-auto" style="color: red;">
-            Ooh It was Captured by other before 😢
+            ${captureMessage}
         </p>
     `;
 
     const modal = new bootstrap.Modal(document.getElementById('exampleModal'));
     modal.show();
+
+    loader.classList.add('d-none');
 });
 
-window.addEventListener('load', async () => {
-    loader.classList.remove('d-none');
-    // await populateARScene();
-    addGlobalMarkerEventListener();
 
-    const logButton = document.getElementById('logButton');
-    logButton.addEventListener('click', () => {
-        if (lastFoundMarkerId) {
-            console.log(`Last found marker ID: ${lastFoundMarkerId}`);
-        } else {
-            console.log('No marker currently found.');
+window.addEventListener('load', async () => {
+
+    loader.classList.remove('d-none');
+
+    onAuthStateChanged(auth, async (user) => {
+        if (!user) {
+            console.error('No user is logged in.');
+            alert('Please log in to play the game.');
+            loader.classList.add('d-none');
+            return;
         }
+
+        const userEmail = user.email;
+        const playerDoc = await getDoc(doc(db, 'players', userEmail));
+
+        if (!playerDoc.exists()) {
+            console.error('Player not found in Firestore.');
+            alert('Player not found. Please register to play the game.');
+            loader.classList.add('d-none');
+            return;
+        }
+
+        teamId = playerDoc.data().teamId; // Set the team ID
+        // await populateARScene();
+        addGlobalMarkerEventListener();
+
+        loader.classList.add('d-none');
+        updateTeamScore();
+        console.log('Loading AR game...');
+        console.log(teamId);
+        console.log(user.email);
     });
-    loader.classList.add('d-none');
+
 });

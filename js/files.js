@@ -34,6 +34,21 @@ async function saveToFirestore(collectionName, docId, data) {
     }
 }
 
+function getCountByRarity(rarity) {
+    switch (rarity) {
+        case 'legendary':
+            return 2;
+        case 'rare':
+            return 3;
+        case 'uncommon':
+            return 4;
+        case 'common':
+            return 5;
+        default:
+            return 0;
+    }
+}
+
 async function handleMarkerFormSubmission(event) {
     event.preventDefault();
 
@@ -56,6 +71,7 @@ async function handleMarkerFormSubmission(event) {
             objectUrl: objectUrl,
             pictureUrl: pictureUrl,
             rarity: rarity,
+            count: getCountByRarity(rarity),
             catched: false,
             createdAt: new Date().toISOString(),
         };
