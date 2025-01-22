@@ -2,26 +2,28 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
     padding: 0;
     margin: 0;
 }
 
-body{
+body {
     /* background-color: #97d3dd; */
 }
 
-.hero-subheading{
+.hero-subheading {
     color: #52cfe4;
     font-size: 1rem;
     font-weight: 700;
 }
 
-.gradient-top{
+.gradient-top {
     text-align: center;
 }
 
-.header{
+.header {
     margin: 14px;
     display: flex;
     justify-content: center;
@@ -29,11 +31,11 @@ body{
     flex-direction: column;
 }
 
-.bg-teal-blue{
+.bg-teal-blue {
     background-color: #52cfe4;
 }
 
-.info{
+.info {
     font-family: "Poppins", serif;
     text-align: center;
     font-size: 24px;
@@ -49,7 +51,7 @@ body{
     font-size: 3rem;
 }
 
-.team-name{
+.team-name {
     font-family: "Poppins", serif;
     font-size: 18px;
     display: flex;
@@ -61,17 +63,17 @@ body{
     background-color: #40ABBE;
     backdrop-filter: blur(3px);
     --tw-text-opacity: 1;
-    box-shadow: 0 0 2rem rgba(6, 206, 217, 0.5);
+    box-shadow: 0 0 2rem rgba(6, 206, 217, 0.2);
     animation: glow 2s infinite;
-    --glow-color: rgba(9, 149, 180, 0.3);
+    /* --glow-color: rgba(9, 149, 180, 0.3); */
 }
 
-.border-teal-blue{
+.border-teal-blue {
     border: 2px solid #40ABBE;
-    border-radius: 10px;
+    border-radius: 45px;
 }
 
-.text-teal-blue{
+.text-teal-blue {
     color: #52cfe4;
 }
 
@@ -81,15 +83,22 @@ body{
     font-style: normal;
 }
 
-.title-2{
+.title-2 {
+    font-family: "Orbitron", serif;
     font-size: 28px;
 }
 
-.members{
+.members {
     margin: 30px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(15px);
 }
 
-.card{
+
+.card {
     font-family: "Poppins", serif;
     padding: 8px;
     border: 2px solid #40ABBE;
@@ -98,23 +107,23 @@ body{
     font-size: 18px;
 }
 
-.image{
-    height: 35px;
-    width: 35px;
+.image {
+    height: 50px;
+    width: 50px;
     border-radius: 200px;
     border: 2px solid #40ABBE;
 }
 
-.btn-teal{
+.btn-teal {
     border: 2px solid #40ABBE;
     background-color: #40ABBE;
     color: white;
     padding: 7px;
-    border-radius: 10px;
+    border-radius: 20px;
     width: 130px;
 }
 
-.alt-name{
+.alt-name {
     margin-top: 10px;
     font-size: 18px;
     font-weight: 600;
@@ -123,31 +132,31 @@ body{
 }
 
 @media (max-width: 650px) {
-    .team-name{
+    .team-name {
         max-width: 90vw;
         margin: auto;
         font-size: 18px;
     }
 
-    .card{
+    .card {
         padding: 0;
         font-size: 14px;
     }
 
-    .btn-teal{
+    .btn-teal {
         padding: 4px;
         height: 40px;
         width: 90px;
     }
 
-    .title-2{
+    .title-2 {
         margin: 16px 0;
     }
 
 }
 
-@media (min-width: 650px){
-    .team-name{
+@media (min-width: 650px) {
+    .team-name {
         max-width: 90vw;
         margin: auto;
     }
@@ -159,8 +168,8 @@ body{
         margin: auto;
     }
 
-    .info{
+    .info {
         max-width: 30vw;
-        margin: auto; 
+        margin: auto;
     }
 }
