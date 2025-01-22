@@ -216,6 +216,12 @@ document.getElementById('logButton').addEventListener('click', async () => {
             teamScore: newScore, 
             capturedMarkers: capturedMarkers 
         });
+
+        // Update the team score on the UI
+        const teamScoreElement = document.getElementById('teamScore');
+        if (teamScoreElement) {
+            teamScoreElement.textContent = `🔥  ${newScore}`;
+        }
     }
 
     modalBody.innerHTML = `
