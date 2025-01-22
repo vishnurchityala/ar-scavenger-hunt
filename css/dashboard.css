@@ -50,6 +50,8 @@ body{
 }
 
 .team-name{
+    font-family: "Poppins", serif;
+    font-size: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +63,7 @@ body{
     --tw-text-opacity: 1;
     box-shadow: 0 0 2rem rgba(6, 206, 217, 0.5);
     animation: glow 2s infinite;
-    --glow-color: rgba(9, 149, 180, 0.5);
+    --glow-color: rgba(9, 149, 180, 0.3);
 }
 
 .border-teal-blue{
@@ -88,10 +90,12 @@ body{
 }
 
 .card{
+    font-family: "Poppins", serif;
     padding: 8px;
     border: 2px solid #40ABBE;
     border-radius: 10px;
     margin: 16px;
+    font-size: 18px;
 }
 
 .image{
@@ -105,7 +109,7 @@ body{
     border: 2px solid #40ABBE;
     background-color: #40ABBE;
     color: white;
-    padding: 13px;
+    padding: 7px;
     border-radius: 10px;
     width: 130px;
 }
@@ -122,11 +126,34 @@ body{
     .team-name{
         max-width: 90vw;
         margin: auto;
+        font-size: 18px;
+    }
+
+    .card{
+        padding: 0;
+        font-size: 14px;
+    }
+
+    .btn-teal{
+        padding: 4px;
+        height: 40px;
+        width: 90px;
+    }
+
+    .title-2{
+        margin: 16px 0;
     }
 
 }
 
-@media (min-width: 650px) {
+@media (min-width: 650px){
+    .team-name{
+        max-width: 90vw;
+        margin: auto;
+    }
+}
+
+@media (min-width: 1025px) {
     .container {
         max-width: 34vw;
         margin: auto;
