@@ -88,6 +88,12 @@ async function handleSubmit(event) {
     const teamLead = document.getElementById("teamLead").value.trim();
     const teamMembers = [];
 
+    if (!teamName || !teamLead || isNaN(teamSize) || teamSize <= 0) {
+        alert("Please fill in all required fields.");
+        loader.classList.add("d-none");
+        return;
+    }
+
     for (let i = 1; i <= teamSize; i++) {
         const memberName = document.getElementById(`teamMember${i}Name`).value.trim();
         const memberEmail = document.getElementById(`teamMember${i}Email`).value.trim();
@@ -165,3 +171,23 @@ async function handleSubmit(event) {
 }
 
 document.getElementById("registrationForm").addEventListener("submit", handleSubmit);
+
+async function logTotalTeamsAndPlayers() {
+    try {
+        const teamsCollection = collection(db, "teams");
+        const playersCollection = collection(db, "players");
+
+        const teamsSnapshot = await getDocs(teamsCollection);
+        const playersSnapshot = await getDocs(playersCollection);
+
+        const totalTeams = teamsSnapshot.size;
+        const totalPlayers = playersSnapshot.size;
+
+        console.log(`Total number of teams: ${totalTeams}`);
+        console.log(`Total number of players: ${totalPlayers}`);
+    } catch (error) {
+        console.error("Error fetching total teams and players: ", error);
+    }
+}
+
+window.addEventListener('load', logTotalTeamsAndPlayers);
