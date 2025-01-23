@@ -12,7 +12,7 @@ import {
 const db = getFirestore(firebase);
 
 const eventDetails = document.getElementById('event-details');
-const text = "JANUARY 23 - 7PM TO 8PM - ON CAMPUS";
+const text = "JANUARY 25 - 7PM TO 8PM - ON CAMPUS";
 let index = 0;
 let isDeleting = false;
 const speed = 100;
