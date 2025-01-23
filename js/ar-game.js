@@ -242,36 +242,59 @@ document.getElementById('logButton').addEventListener('click', async () => {
 
 
 window.addEventListener('load', async () => {
+    // Ensure the loader exists in the DOM
+    const loader = document.getElementById('loader');
+    if (!loader) {
+        console.error('Loader element not found.');
+        return;
+    }
 
+    // Show the loader when the page loads
     loader.classList.remove('d-none');
 
-    onAuthStateChanged(auth, async (user) => {
-        if (!user) {
-            console.error('No user is logged in.');
-            alert('Please log in to play the game.');
-            loader.classList.add('d-none');
-            return;
-        }
+    try {
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                console.error('No user is logged in.');
+                alert('Please log in to play the game.');
+                loader.classList.add('d-none'); // Hide the loader
+                window.location.href = 'index.html'; // Redirect to index.html
+                return;
+            }
 
-        const userEmail = user.email;
-        const playerDoc = await getDoc(doc(db, 'players', userEmail));
+            const userEmail = user.email;
+            console.log('User email:', userEmail);
 
-        if (!playerDoc.exists()) {
-            console.error('Player not found in Firestore.');
-            alert('Player not found. Please register to play the game.');
-            loader.classList.add('d-none');
-            return;
-        }
+            try {
+                const playerDoc = await getDoc(doc(db, 'players', userEmail));
 
-        teamId = playerDoc.data().teamId; // Set the team ID
-        // await populateARScene();
-        addGlobalMarkerEventListener();
+                if (!playerDoc.exists()) {
+                    console.error('Player not found in Firestore.');
+                    alert('Player not found. Please register to play the game.');
+                    loader.classList.add('d-none'); // Hide the loader
+                    window.location.href = 'index.html'; // Redirect to index.html
+                    return;
+                }
 
+                const playerData = playerDoc.data();
+                teamId = playerData.teamId; // Set the team ID
+                console.log('Team ID:', teamId);
+
+                addGlobalMarkerEventListener(); // Call marker listener setup
+                updateTeamScore(); // Update the team score
+
+                console.log('Loading AR game...');
+            } catch (error) {
+                console.error('Error fetching player data:', error);
+                alert('An error occurred while fetching player data.');
+            }
+        });
+    } catch (error) {
+        console.error('Error during authentication state change:', error);
+        alert('An error occurred. Please try again.');
+    } finally {
+        // Always hide the loader in the end
         loader.classList.add('d-none');
-        updateTeamScore();
-        console.log('Loading AR game...');
-        console.log(teamId);
-        console.log(user.email);
-    });
-
+    }
 });
+

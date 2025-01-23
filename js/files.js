@@ -44,6 +44,8 @@ function getCountByRarity(rarity) {
             return 4;
         case 'common':
             return 5;
+        case 'dummy':
+            return 100000;
         default:
             return 0;
     }
