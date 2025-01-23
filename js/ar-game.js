@@ -190,17 +190,13 @@ document.getElementById('logButton').addEventListener('click', async () => {
     const teamData = teamDoc.data();
     const capturedMarkers = teamData.capturedMarkers || [];
 
-    if (capturedMarkers.includes(markerId)) {
-        console.log('Marker already captured by this team.');
-        loader.classList.add('d-none');
-        return;
-    }
-
     const modalBody = document.querySelector('#exampleModal .modal-body');
     modalBody.innerHTML = '';
 
     let captureMessage;
-    if (markerData.count <= 0) {
+    if (capturedMarkers.includes(markerId)) {
+        captureMessage = 'Marker already captured by your team.';
+    } else if (markerData.count <= 0) {
         captureMessage = 'Ooh It was Captured by others before 😢';
     } else {
         captureMessage = `Congratulations! You captured it and earned ${points} points! 🎉`;
