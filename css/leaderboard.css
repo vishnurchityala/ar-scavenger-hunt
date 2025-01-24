@@ -11,6 +11,12 @@ body{
     align-items: center;
 }
 
+.hero-subheading{
+    color: #52cfe4;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
 .title{
     font-family: "Uncial Antiqua", serif;
     font-weight: 900;
