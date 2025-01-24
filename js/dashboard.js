@@ -65,7 +65,7 @@ async function fetchTeamDetails(teamId) {
             const teamContainer = document.getElementById('teamContainer');
             teamData.teamMembers.forEach((member) => { 
                 teamContainer.innerHTML += `
-                <div class="d-flex px-4 bg-white py-3 rounded-4 shadow-sm w-75">
+                <div class="d-flex px-4 bg-white py-3 rounded-4 shadow-sm w-100">
                     <img src="./img/user.png" width="40px" alt="">
                     <div class="ms-3">
                     <p class="m-0 member-name">${member.name}</p>
