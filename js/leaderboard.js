@@ -9,8 +9,10 @@ import {
 
 const db = getFirestore(firebase);
 
+const loader = document.getElementById('loader');
 
 async function populateTeamDetails() {
+    loader.classList.remove('d-none');
     const teamsCollection = collection(db, 'teams');
     const q = query(teamsCollection, orderBy('teamScore', 'desc'));
     const teamsSnapshot = await getDocs(q);
@@ -56,6 +58,7 @@ async function populateTeamDetails() {
         container.appendChild(teamElement);
     });
     console.log('Team details populated successfully.');
+    loader.classList.add('d-none');
 }
 
 
