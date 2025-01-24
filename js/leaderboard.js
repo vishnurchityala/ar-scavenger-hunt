@@ -22,7 +22,7 @@ async function populateTeamDetails() {
     container.innerHTML = '';
 
     teamsList.forEach((team, index) => {
-        console.log('Team:', team);
+        // console.log('Team:', team);
         const teamElement = document.createElement('div');
         teamElement.className = 'd-flex px-4 align-items-center justify-content-between bg-white py-3 rounded-4 mb-3 shadow-sm w-100';
 
