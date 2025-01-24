@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Uncial+Antiqua&family=Varela&display=swap');
+
+body{
+    background-color: rgb(254, 252, 244);
+    user-select: none;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title{
+    font-family: "Uncial Antiqua", serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 4rem;
+    color: #002C34;
+    line-height:4rem;
+}
+
+.varela-regular {
+    font-family: "Varela", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.border-teal{
+    border: 1.6px solid #52cfe4 !important;
+}
+
+.rank{
+    width: 35px;
+    height: 35px;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-lead{
+    font-size: 12px;
+}
+
+
+
