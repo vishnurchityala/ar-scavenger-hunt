@@ -279,7 +279,7 @@ window.addEventListener('load', async () => {
                 const playerData = playerDoc.data();
                 teamId = playerData.teamId; // Set the team ID
                 console.log('Team ID:', teamId);
-
+                
                 addGlobalMarkerEventListener(); // Call marker listener setup
                 updateTeamScore(); // Update the team score
 
