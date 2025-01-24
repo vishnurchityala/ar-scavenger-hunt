@@ -41,8 +41,8 @@ loginButton.addEventListener('click', () => {
         .then((result) => {
             console.log(`User signed in: ${result.user.displayName}`);
             alert(`Welcome, ${result.user.displayName}!`);
-            // Redirect to dashboard.html
-            window.location.href = 'dashboard.html';
+            // Open dashboard.html in a new tab
+            window.open('dashboard.html', '_blank');
         })
         .catch((error) => {
             console.error('Error during sign in:', error);
