@@ -33,6 +33,7 @@
     <!-- Container Div -->
     <div id="scene-container" style="position: relative; height: 100vh; width: 100%;">
       <!-- a-frame root container for all 3D objects in the scene -->
+
       <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; " id="arScene" inspector="" keyboard-shortcuts="" screenshot="" device-orientation-permission-ui="">
         <a-entity camera=""></a-entity>
       <canvas class="a-canvas" data-aframe-canvas="true" width="1920" height="1440"></canvas><div class="a-loader-title" style="display: none;">Responsive AR.js Scene in Div</div><a-entity light="" data-aframe-default-light="" aframe-injected=""></a-entity><a-entity light="" position="" data-aframe-default-light="" aframe-injected=""></a-entity><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fburny.patt?alt=media&amp;token=faaf8d7a-f3b0-4557-897e-5139189e1906" visible="true" id="marker-burny" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
@@ -51,13 +52,10 @@
                 <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fdaystar.glb?alt=media&amp;token=bd07b7e1-e34b-4608-9e5a-e54ce3313f46" visible="true" id="object-daystar" scale="2 2 2">
                 </a-entity>
             </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fdummy.patt?alt=media&amp;token=ff9d4b31-0361-44d9-bf92-c115d0389dcf" visible="true" id="marker-dummy" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
-                <a-entity gltf-model="logo.glb" visible="true" id="object-dummy"  scale="0.2 0.2 0.2">
-                    
+                <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fdummy.glb?alt=media&amp;token=f3d8b0ea-f1db-4f96-b838-208c544d9132" visible="true" id="object-dummy" scale="2 2 2">
                 </a-entity>
-                <!-- <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fdummy.glb?alt=media&amp;token=f3d8b0ea-f1db-4f96-b838-208c544d9132" visible="true" id="object-dummy" scale="5 5 5">
-                </a-entity> -->
-            </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Feclipsia.patt?alt=media&amp;token=95390700-3c7d-4fc8-953c-315353d5eee6" visible="true" id="marker-eclipsia" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
-                <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Feclipsia.glb?alt=media&amp;token=88b46088-0e21-48cd-a4fc-3bf9c33f532f" visible="true" id="object-eclipsia" scale="2 2 2">
+            </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Feclipsia.patt?alt=media&amp;token=95390700-3c7d-4fc8-953c-315353d5eee6" visible="false" id="marker-eclipsia" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
+                <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Feclipsia.glb?alt=media&amp;token=88b46088-0e21-48cd-a4fc-3bf9c33f532f" visible="false" id="object-eclipsia" scale="2 2 2">
                 </a-entity>
             </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fecliptor.patt?alt=media&amp;token=dd80f552-7664-498c-9be3-83d4dcd84f8b" visible="true" id="marker-ecliptor" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
                 <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fecliptor.glb?alt=media&amp;token=ab9f787b-c4dd-4d23-acb5-e627b03ae433" visible="true" id="object-ecliptor" scale="2 2 2">
@@ -83,8 +81,8 @@
             </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Flumina.patt?alt=media&amp;token=bf72217c-1d1e-43a5-87d8-f93de6ca0abb" visible="true" id="marker-lumina" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
                 <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Flumina.glb?alt=media&amp;token=18fcbe45-c9a5-4f7c-8667-ea31ef89868f" visible="true" id="object-lumina" scale="2 2 2">
                 </a-entity>
-            </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Flumivus.patt?alt=media&amp;token=842fc93f-a66b-4c43-a952-56602f16d8d8" visible="true" id="marker-lumivus" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
-                <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Flumivus.glb?alt=media&amp;token=ee2bca59-b49c-4ce8-b97c-7dbc79e4cf8b" visible="true" id="object-lumivus" scale="2 2 2">
+            </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Flumivus.patt?alt=media&amp;token=842fc93f-a66b-4c43-a952-56602f16d8d8" visible="false" id="marker-lumivus" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
+                <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Flumivus.glb?alt=media&amp;token=ee2bca59-b49c-4ce8-b97c-7dbc79e4cf8b" visible="false" id="object-lumivus" scale="2 2 2">
                 </a-entity>
             </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Flustra.patt?alt=media&amp;token=4ace80d8-3c3b-4898-ad50-c72ede7e5b39" visible="true" id="marker-lustra" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
                 <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Flustra.glb?alt=media&amp;token=36c4d3fb-0cf6-4778-87f9-945b2413cff9" visible="true" id="object-lustra" scale="2 2 2">
@@ -107,8 +105,11 @@
             </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fmegaumbrion.patt?alt=media&amp;token=5e8c91d2-d6e7-41e0-8194-572005877510" visible="true" id="marker-megaumbrion" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
                 <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fmegaumbrion.glb?alt=media&amp;token=660a8826-ada6-457d-a81e-497c32c203d6" visible="true" id="object-megaumbrion" scale="2 2 2">
                 </a-entity>
-            </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fmegazephyro.patt?alt=media&amp;token=15781e99-c54b-4faa-860b-587e91ec1623" visible="true" id="marker-megazephyro" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
-                <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fmegazephyro.glb?alt=media&amp;token=7cb4e07e-6fe4-4605-9760-8278b0df1b6f" visible="true" id="object-megazephyro" scale="2 2 2">
+            </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fmegazephyro.patt?alt=media&amp;token=15781e99-c54b-4faa-860b-587e91ec1623" visible="false" id="marker-megazephyro" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
+                <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fmegazephyro.glb?alt=media&amp;token=7cb4e07e-6fe4-4605-9760-8278b0df1b6f" visible="false" id="object-megazephyro" scale="2 2 2">
+                </a-entity>
+            </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fmeme.patt?alt=media&amp;token=8df424a3-2124-4f73-b12f-f1f7a4bea39b" visible="true" id="marker-meme" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
+                <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fmeme.glb?alt=media&amp;token=aaa39ef1-3867-451e-981b-6c0e4c867e50" visible="true" id="object-meme" scale="4 4 4">
                 </a-entity>
             </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fpyronis.patt?alt=media&amp;token=37f02533-3491-4ab0-8298-8199a5cfb586" visible="true" id="marker-pyronis" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
                 <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fpyronis.glb?alt=media&amp;token=baf79763-c7a6-4738-aab5-84b8873fb5ee" visible="true" id="object-pyronis" scale="2 2 2">
@@ -128,8 +129,8 @@
             </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fsolaris.patt?alt=media&amp;token=f4cfed52-82ea-4497-8ef6-109deed2e427" visible="true" id="marker-solaris" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
                 <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fsolaris.glb?alt=media&amp;token=d09d6f40-399a-4aa2-8d4b-e7dab14eb89f" visible="true" id="object-solaris" scale="2 2 2">
                 </a-entity>
-            </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fsolrion.patt?alt=media&amp;token=8ab9aa70-0341-4f04-822d-c956e7448fa4" visible="true" id="marker-solrion" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
-                <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fsolrion.glb?alt=media&amp;token=4d3e8d02-4f64-46c6-9e32-5131ee054d63" visible="true" id="object-solrion" scale="2 2 2">
+            </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fsolrion.patt?alt=media&amp;token=8ab9aa70-0341-4f04-822d-c956e7448fa4" visible="false" id="marker-solrion" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
+                <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fsolrion.glb?alt=media&amp;token=4d3e8d02-4f64-46c6-9e32-5131ee054d63" visible="false" id="object-solrion" scale="2 2 2">
                 </a-entity>
             </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fspectaron.patt?alt=media&amp;token=610e961a-e715-4dde-97da-15a10980a669" visible="true" id="marker-spectaron" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
                 <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fspectaron.glb?alt=media&amp;token=e08ebe7d-e609-41db-9570-426818779e76" visible="true" id="object-spectaron" scale="2 2 2">
@@ -149,7 +150,8 @@
             </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fwraithus.patt?alt=media&amp;token=fd047096-fabb-4cb5-9320-04ad6809332e" visible="true" id="marker-wraithus" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
                 <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fwraithus.glb?alt=media&amp;token=084e87ab-f9db-4928-8801-c44b629afdc1" visible="true" id="object-wraithus" scale="2 2 2">
                 </a-entity>
-            </a-marker><canvas class="a-canvas" data-aframe-canvas="true" width="1920" height="1440"></canvas><div class="a-loader-title" style="display: none;">Responsive AR.js Scene in Div</div><a-entity light="" data-aframe-default-light="" aframe-injected=""></a-entity><a-entity light="" position="" data-aframe-default-light="" aframe-injected=""></a-entity></a-scene>       
+            </a-marker><canvas class="a-canvas" data-aframe-canvas="true" width="1920" height="1440"></canvas><div class="a-loader-title" style="display: none;">Responsive AR.js Scene in Div</div><a-entity light="" data-aframe-default-light="" aframe-injected=""></a-entity><a-entity light="" position="" data-aframe-default-light="" aframe-injected=""></a-entity></a-scene>
+
       <!-- <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; " id="arScene">
         <a-entity camera></a-entity>
       </a-scene> -->

@@ -41,7 +41,7 @@ function getCountByRarity(rarity) {
         case 'rare':
             return 3;
         case 'uncommon':
-            return 4;
+            return 6;
         case 'common':
             return 5;
         case 'dummy':

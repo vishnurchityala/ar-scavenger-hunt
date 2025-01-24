@@ -1,33 +1,128 @@
-<div id="scene-container" style="position: relative; height: 100vh; width: 100%;">
-    <!-- a-frame root container for all 3D objects in the scene -->
-    <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; " id="arScene" inspector="" keyboard-shortcuts="" screenshot="" device-orientation-permission-ui="">
-      <!-- Camera Component -->
-      <a-entity camera=""></a-entity>
-    <canvas class="a-canvas" data-aframe-canvas="true" width="1920" height="610"></canvas><div class="a-loader-title" style="display: none;">Responsive AR.js Scene in Div</div><a-entity light="" data-aframe-default-light="" aframe-injected=""></a-entity><a-entity light="" position="" data-aframe-default-light="" aframe-injected=""></a-entity>
-        <a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fbolddy.patt?alt=media&amp;token=eb803a1a-5306-4467-82c7-29a1d30c9172" visible="true" id="marker-bolddy" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
-              <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fbolddy.glb?alt=media&amp;token=c5d5d374-aedf-43a6-b869-57dfa3397b58" visible="true" id="object-bolddy" scale="2 2 2">
-              </a-entity>
-          </a-marker>
-          <a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fclaybit.patt?alt=media&amp;token=6f2103f8-f40f-4ceb-adea-e555c7600f6d" visible="true" id="marker-claybit" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
-              <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fclaybit.glb?alt=media&amp;token=a567af1e-e55b-4d23-a3a5-4ad2fe8dae24" visible="true" id="object-claybit" scale="2 2 2">
-              </a-entity>
-          </a-marker>
-          <a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fcloddy.patt?alt=media&amp;token=eb54a8e8-d1b8-45df-b96e-bf953323b040" visible="true" id="marker-cloddy" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
-              <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fcloddy.glb?alt=media&amp;token=c2e8655a-e4de-4e48-9204-68bc7104fd85" visible="true" id="object-cloddy" scale="2 2 2">
-              </a-entity>
-          </a-marker>
-          <a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fcrumblo.patt?alt=media&amp;token=882a74e3-a746-4d66-b3f2-d11819160032" visible="true" id="marker-crumblo" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
-              <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fcrumblo.glb?alt=media&amp;token=38347166-f337-4d0f-bb07-7f6d8728bcd7" visible="true" id="object-crumblo" scale="2 2 2">
-              </a-entity>
-          </a-marker>
-          <a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fkaranbit.patt?alt=media&amp;token=25c3b36e-9682-4b24-89a6-42892359e717" visible="true" id="marker-karanbit" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
-              <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fkaranbit.glb?alt=media&amp;token=23354a6a-0d7a-4237-b6f8-ebf81037f18b" visible="true" id="object-karanbit" scale="2 2 2">
-              </a-entity>
-          </a-marker><a-marker type="pattern" url="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/patterns%2Fvishnutrial.patt?alt=media&amp;token=5aca06d5-d46d-4579-acc1-b166b35ceca8" visible="true" id="marker-vishnutrial" emitevents="true" material="" arjs-anchor="" arjs-hit-testing="">
-              <a-entity gltf-model="https://firebasestorage.googleapis.com/v0/b/ar-scavenger-62f3e.firebasestorage.app/o/objects%2Fvishnutrial.glb?alt=media&amp;token=c6c84772-6d8e-4588-b696-8586084b493c" visible="true" id="object-vishnutrial" scale="2 2 2">
-              </a-entity>
-          </a-marker>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Firebase Collection to Excel</title>
+</head>
+<body>
 
-    <!-- Button to log the marker ID -->
-    <button id="logButton" class="btn btn-primary btn-glow rounded-pill py-3 px-4 fw-bold fs-xsmall">Catch Creature</button>
-  </div>
+    <h1>Export Firebase Data to Excel</h1>
+    <button onclick="exportToExcel()">Download Teams Excel</button>
+    <button onclick="exportPlayersToExcel()">Download Players Excel</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+    <script type="module">
+        import firebase from './js/firebaseconfig.js';
+        import { 
+            getFirestore, 
+            collection,
+            getDocs 
+        } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+        const db = getFirestore(firebase);
+
+        // Export Teams Data
+        async function exportToExcel() {
+            try {
+                const collectionName = 'teams';
+                const querySnapshot = await getDocs(collection(db, collectionName));
+
+                const data = [];
+                for (const doc of querySnapshot.docs) {
+                    const teamData = { id: doc.id, ...doc.data() };
+
+                    // Transforming teamMembers into individual columns
+                    const transformedData = {
+                        id: teamData.id || "",
+                        teamName: teamData.teamName || "",
+                        teamLead: teamData.teamLead || "",
+                        teamScore: teamData.teamScore || 0,
+                        teamSize: teamData.teamSize || 0,
+                        capturedMarkers: teamData.capturedMarkers || "",
+                    };
+
+                    // Process team members
+                    const teamMembers = teamData.teamMembers || [];
+                    teamMembers.forEach((member, index) => {
+                        transformedData[`member${index + 1}_name`] = member.name || "";
+                        transformedData[`member${index + 1}_email`] = member.email || "";
+                    });
+
+                    // Ensure empty member fields exist up to teamSize
+                    for (let i = teamMembers.length; i < teamData.teamSize; i++) {
+                        transformedData[`member${i + 1}_name`] = "";
+                        transformedData[`member${i + 1}_email`] = "";
+                    }
+
+                    data.push(transformedData);
+                }
+
+                console.log("Transformed Teams Data:", data);
+
+                if (data.length === 0) {
+                    alert("No data found in Firestore collection!");
+                    return;
+                }
+
+                // Create and write the Excel file
+                const worksheet = XLSX.utils.json_to_sheet(data);
+                const workbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(workbook, worksheet, collectionName);
+                XLSX.writeFile(workbook, `${collectionName}.xlsx`);
+                alert("Teams Excel file has been downloaded successfully!");
+            } catch (error) {
+                console.error("Error exporting teams data to Excel:", error);
+                alert("Failed to export teams data.");
+            }
+        }
+
+        async function exportPlayersToExcel() {
+    try {
+        const collectionName = 'players';
+        const querySnapshot = await getDocs(collection(db, collectionName));
+
+        const data = [];
+        for (const doc of querySnapshot.docs) {
+            const playerData = { id: doc.id, ...doc.data() };
+            console.log("Player Data:", playerData);
+
+            const transformedData = {
+                id: playerData.id || "", // Use 'id' as given
+                playerName: playerData.name|| "", // Corrected field to 'playerName'
+                playerEmail: playerData.email || "", // Corrected field to 'playerEmail'
+                teamName: playerData.teamId || "", // Corrected field to 'teamName'
+            };
+
+            data.push(transformedData);
+        }
+
+        console.log("Transformed Players Data:", data);
+
+        if (data.length === 0) {
+            alert("No data found in Firestore collection!");
+            return;
+        }
+
+        // Create and write the Excel file
+        const worksheet = XLSX.utils.json_to_sheet(data);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, collectionName);
+        XLSX.writeFile(workbook, `${collectionName}.xlsx`);
+        alert("Players Excel file has been downloaded successfully!");
+    } catch (error) {
+        console.error("Error exporting players data to Excel:", error);
+        alert("Failed to export players data.");
+    }
+}
+
+
+
+        // Expose functions to the global scope for button click handlers
+        window.exportToExcel = exportToExcel;
+        window.exportPlayersToExcel = exportPlayersToExcel;
+    </script>
+
+</body>
+</html>

@@ -280,6 +280,7 @@ window.addEventListener('load', async () => {
                 teamId = playerData.teamId; // Set the team ID
                 console.log('Team ID:', teamId);
                 
+                // await populateARScene(); // Populate the AR scene with markers
                 addGlobalMarkerEventListener(); // Call marker listener setup
                 updateTeamScore(); // Update the team score
 
