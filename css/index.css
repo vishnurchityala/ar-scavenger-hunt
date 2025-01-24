@@ -24,6 +24,35 @@ body{
     color: #52cfe4;
 }
 
+    /* Remove hover effects */
+    .btn.custom-btn:hover {
+        background-color: inherit !important; /* Keeps the background color consistent */
+        color: inherit !important;           /* Keeps the text color consistent */
+        box-shadow: none !important;         /* Removes the shadow */
+    }
+
+    /* Remove focus outline */
+    .btn.custom-btn:focus {
+        box-shadow: none !important;         /* Removes focus outline */
+        outline: none !important;            /* Removes the browser's default focus outline */
+    }
+
+    /* Remove active (clicked) effects */
+    .btn.custom-btn:active {
+        background-color: inherit !important; /* Retains the original background color */
+        color: inherit !important;           /* Retains the original text color */
+        box-shadow: none !important;         /* Removes the shadow */
+        transform: none !important;          /* Prevents the button from 'pressing in' */
+    }
+
+    /* Remove styles when button remains "active" after click */
+    .btn.custom-btn:focus:active {
+        background-color: inherit !important;
+        color: inherit !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
 .varela-regular {
     font-family: "Varela", serif;
     font-weight: 400;
