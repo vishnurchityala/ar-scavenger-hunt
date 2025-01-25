@@ -137,7 +137,7 @@ async function handleSubmit(event) {
         const teamsSnapshot = await getDocs(teamsCollection);
         const numberOfTeams = teamsSnapshot.size;
 
-        if (!(numberOfTeams <= 111)) {
+        if (!(numberOfTeams <= 120)) {
             alert("Registration limit reached. No more teams can be registered.");
             loader.classList.add("d-none");
             return;
